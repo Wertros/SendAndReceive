@@ -19,10 +19,9 @@ public class MyBroadcast extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_broadcast);
-
     }
 
-    public void onClickWriteMessage(View view) {
+    public void onClickSendMessage(View view) {
 
         editMessage = new EditText(this);
         editMessage.setHint("Enter your massage...");
@@ -38,12 +37,11 @@ public class MyBroadcast extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 //send
                 String message = editMessage.getText().toString();
-
                 Intent intent = new Intent("com.example.adam.MESSAGE");
                 intent.putExtra("wiadomosc", message);
 
-            sendBroadcast(intent);
-            }
+                sendBroadcast(intent);
+        }
         });
         alertBuilder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
             @Override

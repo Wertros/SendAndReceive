@@ -1,10 +1,9 @@
 package com.example.adam.broadcastreceiver;
 
 import android.app.IntentService;
-import android.app.Service;
+import android.app.NotificationManager;
 import android.content.Intent;
-import android.os.IBinder;
-import android.support.annotation.Nullable;
+import android.content.IntentFilter;
 import android.util.Log;
 
 /**
@@ -13,26 +12,6 @@ import android.util.Log;
 public class MyService extends IntentService{
 
     MyReceiver myReceiver;
-//
-//    @Override
-//    public void onCreate() {
-//        try{
-//            new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    myReceiver = new MyReceiver();
-//                }
-//            });
-//        }catch (IllegalThreadStateException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-//    @Nullable
-//    @Override
-//    public IBinder onBind(Intent intent) {
-//        return null;
-//    }
 
     public MyService() {
         super("MyService");
@@ -42,7 +21,11 @@ public class MyService extends IntentService{
     @Override
     protected void onHandleIntent(Intent intent) {
         myReceiver = new MyReceiver();
+        IntentFilter itf = new IntentFilter("com.example.adam.MESSAGE");
+
+        getBaseContext().registerReceiver(myReceiver, itf);
 
         Log.d("service", "handling intent...");
+
     }
 }

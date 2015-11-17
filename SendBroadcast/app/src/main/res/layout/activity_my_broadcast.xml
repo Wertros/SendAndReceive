@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Write Message"
         android:textColor="@color/colorPrimary"
-        android:onClick="onClickWriteMessage"
+        android:onClick="onClickSendMessage"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="179dp" />
